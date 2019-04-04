@@ -34,5 +34,52 @@ namespace DataCardio.Test1
             Assert.AreEqual(asp, consigliato);
         }
 
+        [TestMethod]
+        public void TestFreqCardiaca1()
+        {
+            int battiti=50;
+            string asp = "Bradicardia";
+            string freqCardiaca = CardioLibrary.DataCardio.ValoreFrequenza(battiti);
+            Assert.AreEqual(asp, freqCardiaca);
+        }
+
+        [TestMethod]
+        public void TestFreqCardiaca2()
+        {
+            int battiti = 78;
+            string asp = "Normale";
+            string freqCardiaca = CardioLibrary.DataCardio.ValoreFrequenza(battiti);
+            Assert.AreEqual(asp, freqCardiaca);
+        }
+
+        [TestMethod]
+        public void TestFreqCardiaca3()
+        {
+            int battiti = 120;
+            string asp = "Tachicardia";
+            string freqCardiaca = CardioLibrary.DataCardio.ValoreFrequenza(battiti);
+            Assert.AreEqual(asp, freqCardiaca);
+        }
+
+        [TestMethod]
+        public void TestFreqCardiaca4()
+        {
+            int battiti = 0;
+            string asp = "Impossibile";
+            string freqCardiaca = CardioLibrary.DataCardio.ValoreFrequenza(battiti);
+            Assert.AreEqual(asp, freqCardiaca);
+        }
+
+        [TestMethod]
+        public void TestFreqCardiaca5()
+        {
+            int battiti = -16;
+            string asp = "Impossibile";
+            string freqCardiaca = CardioLibrary.DataCardio.ValoreFrequenza(battiti);
+            Assert.AreEqual(asp, freqCardiaca);
+        }
+
+
+
     }
 }
