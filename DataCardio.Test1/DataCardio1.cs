@@ -11,7 +11,7 @@ namespace DataCardio.Test1
         public void TestBattiti1()
         {
             int eta = 16;
-            string asp ="142,8;183,6";
+            string asp ="143;184";
             string consigliato = CardioLibrary.DataCardio.Battiti(eta);
             Assert.AreEqual(asp, consigliato);
         }
@@ -175,5 +175,87 @@ namespace DataCardio.Test1
             string KCal = CardioLibrary.DataCardio.SpesaEnergetica(esercizio, kmPercorsi, peso);
             Assert.AreEqual(asp, KCal);
         }
+
+        [TestMethod]
+        public void TestMediaBattiti1()
+        {
+            int[] battiti = new int[] {80,123,94,143,130,70};
+            string asp = "106";
+            string media = CardioLibrary.DataCardio.MediaBattiti(battiti);
+            Assert.AreEqual(asp, media);
+        }
+
+        [TestMethod]
+        public void TestMediaBattiti2()
+        {
+            int[] battiti = new int[] { 0, 123, 94, 143, 130, 70 };
+            string asp = "impossibile";
+            string media = CardioLibrary.DataCardio.MediaBattiti(battiti);
+            Assert.AreEqual(asp, media);
+        }
+
+        [TestMethod]
+        public void TestMediaBattiti3()
+        {
+            int[] battiti = new int[] { -140, 123, 94, 143, 130, 70 };
+            string asp = "impossibile";
+            string media = CardioLibrary.DataCardio.MediaBattiti(battiti);
+            Assert.AreEqual(asp, media);
+        }
+
+        [TestMethod]
+        public void TestBattitoRiposo1()
+        {
+            int[] battiti = new int[] { 80, 123, 94, 143, 130, 70 };
+            string asp = "70";
+            string media = CardioLibrary.DataCardio.BattitoRiposo(battiti);
+            Assert.AreEqual(asp, media);
+        }
+
+        [TestMethod]
+        public void TestBattitoRiposo2()
+        {
+            int[] battiti = new int[] { 0, 123, 94, 143, 130, 70 };
+            string asp = "impossibile";
+            string media = CardioLibrary.DataCardio.BattitoRiposo(battiti);
+            Assert.AreEqual(asp, media);
+        }
+
+        [TestMethod]
+        public void TestBattitoRiposo3()
+        {
+            int[] battiti = new int[] { -140, 123, 94, 143, 130, 70 };
+            string asp = "impossibile";
+            string media = CardioLibrary.DataCardio.BattitoRiposo(battiti);
+            Assert.AreEqual(asp, media);
+        }
+
+        [TestMethod]
+        public void TestVariabilitàBattito1()
+        {
+            int[] battiti = new int[] { 80, 123, 94, 143, 130, 70 };
+            string asp = "73";
+            string media = CardioLibrary.DataCardio.VariabilitàBattito(battiti);
+            Assert.AreEqual(asp, media);
+        }
+
+        [TestMethod]
+        public void TestVariabilitàBattito2()
+        {
+            int[] battiti = new int[] { 0, 123, 94, 143, 130, 70 };
+            string asp = "impossibile";
+            string media = CardioLibrary.DataCardio.VariabilitàBattito(battiti);
+            Assert.AreEqual(asp, media);
+        }
+
+        [TestMethod]
+        public void TestVariabilitàBattito3()
+        {
+            int[] battiti = new int[] { -80, 123, 94, 143, 130, 70 };
+            string asp = "impossibile";
+            string media = CardioLibrary.DataCardio.VariabilitàBattito(battiti);
+            Assert.AreEqual(asp, media);
+        }
+
     }
 }

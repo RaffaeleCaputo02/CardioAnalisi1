@@ -16,9 +16,9 @@ namespace CardioLibrary
             }
             else
             {
-                double massimo = 220 - eta;
-                double massimoCon = massimo / 100 * 90;
-                double minimoCon = massimo / 100 * 70;
+                int massimo = 220 - eta;
+                int massimoCon = massimo / 100 * 90;
+                int minimoCon = massimo / 100 * 70;
                 string consigliato = ($"{minimoCon};{massimoCon}");
                 return consigliato;
             }
@@ -83,6 +83,84 @@ namespace CardioLibrary
                 return "impossibile";
         }
 
+        public static string MediaBattiti(int[] battiti)
+        {
+            bool flag = false;
+            int somma = 0;
+            for (int i=0;i<battiti.Length;i++)
+            {
+                if (battiti[i] <= 0) flag = true;
+                somma = somma + battiti[i];
+            }
+            if(flag==false)
+            {
+                int media = somma / battiti.Length;
+                return Convert.ToString(media);
+            }
+            return "impossibile";
+        }
+
+        public static string BattitoRiposo(int[] battiti)
+        {
+            bool flag = false;
+            int minimo=battiti[0];
+            for (int i = 0; i < battiti.Length; i++)
+            {
+                if (battiti[i] <= 0) flag = true;
+                if (battiti[i] < minimo) minimo = battiti[i];
+            }
+            if (flag == false)
+            {
+                return Convert.ToString(minimo);
+            }
+            return "impossibile";
+        }
+
+        public static string VariabilitàBattito(int[] battiti)
+        {
+            bool flag = false;
+            int minimo = battiti[0];
+            int massimo = battiti[0];
+            for (int i = 0; i < battiti.Length; i++)
+            {
+                if (battiti[i] <= 0) flag = true;
+                if (battiti[i] < minimo) minimo = battiti[i];
+                if (battiti[i] > massimo) massimo = battiti[i];
+            }
+            if (flag == false)
+            {
+                int variabilità = massimo - minimo;
+                return Convert.ToString(variabilità);
+            }
+            return "impossibile";
+        }
+        public static string[] OrdinamentoBattiti(int[] battiti)
+        {
+            bool flag = false;
+            
+            for (int i = 0; i < battiti.Length; i++)
+            {
+                if (battiti[i] <= 0) flag = true;
+            }
+
+            for(int i=0;i<battiti.Length;i++)
+            {
+                for(int j=0; j<battiti.Length-1;j++)
+                {
+                    if(battiti[j]>battiti[j+1])
+                    {
+                        int tmp = battiti[j];
+                        battiti[j] = battiti[j + 1];
+                        battiti[j + 1] = tmp;
+                    }
+                }
+            }
+            if (flag == false)
+            {
+                return battiti;
+            }
+            
+        }
 
     }
 }
