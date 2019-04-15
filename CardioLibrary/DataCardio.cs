@@ -45,18 +45,22 @@ namespace CardioLibrary
         
         }
 
-        public static string Calorie(string sesso, int F, int P, int A, int T)
+        public static string Calorie(string sesso, int F, double P, int A, int T)
         {
             if (F > 0 && P > 0 && A > 0 && T > 0)
             {
                 if (sesso == "uomo")
                 {
-                    string calorie=Convert.ToString(((A * 0.2017) + (P * 0.199) + (F * 0.6309) - 55.0969) * T / 40184);
+                    double calorie1 = ((A * 0.2017) + (P * 0.199) + (F * 0.6309) - 55.0969) * T / 4.184;
+                    calorie1 = Math.Round(calorie1, 2);
+                    string calorie=Convert.ToString(calorie1);
                     return calorie;
                 }
                 else
                 {
-                    string calorie = Convert.ToString(((A * 0.074) - (P * 0.126) + (F * 0.4472) - 20.4022) * T / 4.184);
+                    double calorie1 = ((A * 0.074) - (P * 0.126) + (F * 0.4472) - 20.4022) * T / 4.184;
+                    calorie1 = Math.Round(calorie1, 2);
+                    string calorie = Convert.ToString(calorie1);
                     return calorie;
                 }
             }

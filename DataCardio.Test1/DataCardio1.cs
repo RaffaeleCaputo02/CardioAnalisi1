@@ -80,6 +80,58 @@ namespace DataCardio.Test1
         }
 
 
+        [TestMethod]
+        public void TestCalorie1()
+        {
+            string sesso = "uomo";
+            int F = 120;
+            double P = 77;
+            int A = 16;
+            int T = 90;
+            string asp = "842,38";
+            string C = CardioLibrary.DataCardio.Calorie(sesso, F, P, A, T);
+            Assert.AreEqual(asp, C);
+        }
+
+        [TestMethod]
+        public void TestCalorie2()
+        {
+            string sesso = "donna";
+            int F = 120;
+            double P = 77;
+            int A = 16;
+            int T = 90;
+            string asp = "532,25";
+            string C = CardioLibrary.DataCardio.Calorie(sesso, F, P, A, T);
+            Assert.AreEqual(asp, C);
+        }
+
+        [TestMethod]
+        public void TestCalorie3()
+        {
+            string sesso = "donna";
+            int F = 120;
+            double P = 77;
+            int A = -22;
+            int T = 90;
+            string asp = "impossibile";
+            string C = CardioLibrary.DataCardio.Calorie(sesso, F, P, A, T);
+            Assert.AreEqual(asp, C);
+        }
+
+        [TestMethod]
+        public void TestCalorie4()
+        {
+            string sesso = "uomo";
+            int F = 120;
+            double P = 0;
+            int A = -22;
+            int T = 90;
+            string asp = "impossibile";
+            string C = CardioLibrary.DataCardio.Calorie(sesso, F, P, A, T);
+            Assert.AreEqual(asp, C);
+        }
+
 
     }
 }
