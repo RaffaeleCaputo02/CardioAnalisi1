@@ -51,25 +51,36 @@ namespace CardioLibrary
             {
                 if (sesso == "uomo")
                 {
-                    double calorie1 = ((A * 0.2017) + (P * 0.199) + (F * 0.6309) - 55.0969) * T / 4.184;
-                    calorie1 = Math.Round(calorie1, 2);
-                    string calorie=Convert.ToString(calorie1);
-                    return calorie;
+                    double calorie = Math.Round(((A * 0.2017) + (P * 0.199) + (F * 0.6309) - 55.0969) * T / 4.184, 2);
+                    return Convert.ToString(calorie);
                 }
-                else
+                if(sesso=="donna")
                 {
-                    double calorie1 = ((A * 0.074) - (P * 0.126) + (F * 0.4472) - 20.4022) * T / 4.184;
-                    calorie1 = Math.Round(calorie1, 2);
-                    string calorie = Convert.ToString(calorie1);
-                    return calorie;
+                    double calorie = Math.Round(((A * 0.074) - (P * 0.126) + (F * 0.4472) - 20.4022) * T / 4.184, 2);
+                    return Convert.ToString(calorie);
                 }
             }
-            else
-            {
-                return "impossibile";
-            }
-                
+           
+            return "impossibile";
+        }
 
+        public static string SpesaEnergetica(string esercizio, double kmPercorsi, double peso)
+        {
+            if(kmPercorsi>0 && peso>0)
+            {
+                if(esercizio=="corsa")
+                {
+                    double spesaEnergetica = Math.Round(0.9 * kmPercorsi * peso, 2);
+                    return Convert.ToString(spesaEnergetica);
+
+                }
+                if(esercizio=="camminata")
+                {
+                    double spesaEnergetica = Math.Round(0.50 * kmPercorsi * peso, 2);
+                    return Convert.ToString(spesaEnergetica);
+                }
+            }
+                return "impossibile";
         }
 
 

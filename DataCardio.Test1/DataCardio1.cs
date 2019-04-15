@@ -132,6 +132,48 @@ namespace DataCardio.Test1
             Assert.AreEqual(asp, C);
         }
 
+        [TestMethod]
+        public void TestSpesaEnergetica1()
+        {
+            string esercizio = "corsa";
+            double kmPercorsi=3.5;
+            double peso = 77;
+            string asp = "242,55";
+            string KCal = CardioLibrary.DataCardio.SpesaEnergetica(esercizio, kmPercorsi,peso);
+            Assert.AreEqual(asp, KCal);
+        }
 
+        [TestMethod]
+        public void TestSpesaEnergetica2()
+        {
+            string esercizio = "corsa";
+            double kmPercorsi = 0;
+            double peso = 77;
+            string asp = "impossibile";
+            string KCal = CardioLibrary.DataCardio.SpesaEnergetica(esercizio, kmPercorsi, peso);
+            Assert.AreEqual(asp, KCal);
+        }
+
+        [TestMethod]
+        public void TestSpesaEnergetica3()
+        {
+            string esercizio = "camminata";
+            double kmPercorsi = 3.5;
+            double peso = 0;
+            string asp = "impossibile";
+            string KCal = CardioLibrary.DataCardio.SpesaEnergetica(esercizio, kmPercorsi, peso);
+            Assert.AreEqual(asp, KCal);
+        }
+
+        [TestMethod]
+        public void TestSpesaEnergetica4()
+        {
+            string esercizio = "camminata";
+            double kmPercorsi = 10;
+            double peso = 120;
+            string asp = "600";
+            string KCal = CardioLibrary.DataCardio.SpesaEnergetica(esercizio, kmPercorsi, peso);
+            Assert.AreEqual(asp, KCal);
+        }
     }
 }
