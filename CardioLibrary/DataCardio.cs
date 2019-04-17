@@ -134,15 +134,8 @@ namespace CardioLibrary
             }
             return "impossibile";
         }
-        public static string[] OrdinamentoBattiti(int[] battiti)
+        public static int[] OrdinamentoBattiti(int[] battiti)
         {
-            bool flag = false;
-            
-            for (int i = 0; i < battiti.Length; i++)
-            {
-                if (battiti[i] <= 0) flag = true;
-            }
-
             for(int i=0;i<battiti.Length;i++)
             {
                 for(int j=0; j<battiti.Length-1;j++)
@@ -155,12 +148,19 @@ namespace CardioLibrary
                     }
                 }
             }
-            if (flag == false)
-            {
-                return battiti;
-            }
-            
+            return battiti;
         }
 
+        public static string ControlloBattiti(int[]battiti)
+        {
+            for(int i=0; i<battiti.Length;i++)
+            {
+                if(battiti[i]<=0)
+                {
+                    return "impossibile";
+                }
+            }
+            return "corretto";
+        }
     }
 }

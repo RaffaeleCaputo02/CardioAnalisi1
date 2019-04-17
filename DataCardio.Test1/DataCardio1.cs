@@ -11,7 +11,7 @@ namespace DataCardio.Test1
         public void TestBattiti1()
         {
             int eta = 16;
-            string asp ="143;184";
+            string asp ="140;180";
             string consigliato = CardioLibrary.DataCardio.Battiti(eta);
             Assert.AreEqual(asp, consigliato);
         }
@@ -257,5 +257,58 @@ namespace DataCardio.Test1
             Assert.AreEqual(asp, media);
         }
 
+        [TestMethod]
+        public void TestOrdinamentoBattiti1()
+        {
+            int[] battiti = new int[] { 80, 123, 94, 143, 130, 70 };
+            int[] aspArray = new int[] { 70,80,94,123,130,143};
+            string aspString = "giusto";
+            string controllo = CardioLibrary.DataCardio.ControlloBattiti(battiti);
+            int[] ordinato = CardioLibrary.DataCardio.OrdinamentoBattiti(battiti);
+            if (controllo != "impossibile")
+            {
+                CollectionAssert.AreEqual(aspArray, ordinato);
+            }
+            else
+            {
+                Assert.AreEqual(aspString, controllo);
+            }
+        }
+
+        [TestMethod]
+        public void TestOrdinamentoBattiti2()
+        {
+            int[] battiti = new int[] { 0, 123, 94, 143, 130, 70 };
+            int[] aspArray = new int[] { 70, 80, 94, 123, 130, 143 };
+            string aspString = "impossibile";
+            string controllo = CardioLibrary.DataCardio.ControlloBattiti(battiti);
+            int[] ordinato = CardioLibrary.DataCardio.OrdinamentoBattiti(battiti);
+            if (controllo != "impossibile")
+            {
+                CollectionAssert.AreEqual(aspArray, ordinato);
+            }
+            else
+            {
+                Assert.AreEqual(aspString, controllo);
+            }
+        }
+
+        [TestMethod]
+        public void TestOrdinamentoBattiti3()
+        {
+            int[] battiti = new int[] { -80, 123, 94, 143, 130, 70 };
+            int[] aspArray = new int[] { 70, 80, 94, 123, 130, 143 };
+            string aspString = "impossibile";
+            string controllo = CardioLibrary.DataCardio.ControlloBattiti(battiti);
+            int[] ordinato = CardioLibrary.DataCardio.OrdinamentoBattiti(battiti);
+            if (controllo != "impossibile")
+            {
+                CollectionAssert.AreEqual(aspArray, ordinato);
+            }
+            else
+            {
+                Assert.AreEqual(aspString, controllo);
+            }
+        }
     }
 }
